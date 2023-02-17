@@ -1,0 +1,220 @@
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    height: 100%;
+
+    h1,
+    h2,
+    h3 {
+        text-align: center;
+    }
+
+    .title {
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+    .content{
+        padding-bottom: 10%;
+    }
+}
+
+
+/* .banner {
+    position: relative;
+
+    img {
+        height: 500px;
+        object-fit: cover;
+    }
+
+    &__info {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #f6f6f6;
+        padding: 2% 9%;
+        opacity: 0.9;
+    }
+} */
+
+/* .recommendations {
+    --heigth_recommendations-card-img: 200px;
+    --heigth_recommendations-card: 390px;
+    --max-width_recommendations-card: 390px;
+    --margin_recommendations-card-overlay: 8em;
+
+    display: flex;
+    width: 80%;
+    margin: auto;
+
+    &-card {
+        position: relative;
+        flex-grow: 1;
+        border-radius: 5px;
+        border: 1px solid black;
+        min-height: var(--heigth_recommendations-card);
+        max-width: var(--max-width_recommendations-card);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-card:not(:nth-last-child(1)) {
+        margin-right: 2%;
+    }
+
+    &-card__img {
+        position: absolute;
+        height: 100%;
+        z-index: -2;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &-card__overlay {
+        width: 100%;
+        position: relative;
+        color: var(--color-white);
+        padding: 1rem;
+        position: relative;
+
+        margin-top: var(--margin_recommendations-card-overlay);
+
+        background: #39333375;
+
+         
+        .card-title {
+            margin-bottom: 3%;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card-options {
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                opacity: 0.5;
+
+                svg {
+                    height: 1.8em;
+                    width: 1.8em;
+                }
+            }
+        }
+
+
+
+    }
+
+
+    &-card__overlay::after {
+        position: absolute;
+        content: ' ';
+        background: #48383873;
+        z-index: -1;
+        height: 0;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+
+    &-card:hover &-card__overlay::after {
+        background: #000000a1;
+        height: 100%;
+        transition: all 0.5s;
+        opacity: 1;
+    }
+
+    &-card:hover .card-options button {
+        opacity: 1;
+    }
+
+
+}
+ */
+
+
+.filter {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 3%;
+
+    &__controls {
+        width: 100%;
+        margin: auto;
+        display: flex;
+
+        .form-control:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #cfd0d1;
+            outline: 0;
+            box-shadow: 0px 2px 12px .25rem rgba(182, 182, 182, 0.25);
+            /*  */
+        }
+    }
+    &__controls-btn {
+        display: block;
+        padding: 0 1.5em;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            padding: 1% 3%;
+
+        }
+
+        .form-check-input:focus {
+            box-shadow: none;
+        }
+
+        .form-check-input:checked {
+            background-color: #424649;
+            border: #424649;
+        }
+    }
+
+    &__list:not(:nth-last-child(1)) {
+        margin: 2%;
+    }
+
+
+
+}
+
+.search-results{
+    margin: 0 5%;
+
+
+}
+
+
+
+
+.bi::before {
+    display: inline-block;
+    content: "";
+    vertical-align: -.125em;
+    background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+}
