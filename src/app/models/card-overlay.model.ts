@@ -5,4 +5,5 @@ export interface CardOverlay{
     tags?:Array<any>,
     link:string,
     cover?:string,
+    fullHeight?:boolean
 }

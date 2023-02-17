@@ -26,6 +26,7 @@
     }
 
     &__info {
+       
         width: 100%;
         position: relative;
         color: var(--color-white);
@@ -34,9 +35,8 @@
 
         margin-top: var(--margin_recommendations-card-overlay);
 
-        background: #39333375;
-
-        /*  opacity: 0.8; */
+        /* background: #39333375; */
+ 
         .card-title {
             margin-bottom: 3%;
         }
@@ -47,6 +47,9 @@
 
             display: flex;
             flex-wrap: wrap;
+        }
+        .card-title,.card-text{
+            opacity: 0.1;
         }
     }
 
@@ -69,7 +72,7 @@
         content: ' ';
         background: #48383873;
         z-index: -1;
-        height: 0;
+        height: 41%;
         width: 100%;
         bottom: 0;
         left: 0;
@@ -79,6 +82,9 @@
         background: #000000a1;
         height: 100%;
         transition: all 0.5s;
+        opacity: 1;
+    }
+    &:hover .card-title,  &:hover .card-text{
         opacity: 1;
     }
 

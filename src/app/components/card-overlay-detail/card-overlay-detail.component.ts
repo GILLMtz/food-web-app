@@ -11,7 +11,7 @@ export class CardOverlayDetailComponent implements OnInit {
  @Input() cardConfig!:CardOverlay;
   constructor(private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
   }
   seeDetail(){
     let idRecipe=this.cardConfig.id;

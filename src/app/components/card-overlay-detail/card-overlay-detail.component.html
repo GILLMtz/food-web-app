@@ -1,4 +1,5 @@
-<div class=" card-overlay-detail  ">
+<div  [ngClass]="{'h-100':cardConfig.fullHeight==undefined,'card-overlay-detail':true}">
+
     <div class=" card-overlay-detail__img">
         <img [src]="cardConfig.cover" class="" alt="...">
     </div>
@@ -6,7 +7,7 @@
         <h5 class="card-title"   >{{cardConfig.title}}</h5>
         <p class="card-text">{{cardConfig.description}}</p>
 
-        <p class="card-text"><small>Clasificaciones: </small></p>
+        <p class="card-text "><small>Clasificaciones: </small></p>
         <ul class="card-list">
             <li *ngFor="let tag of cardConfig.tags;index as index" >
                 <span  [appBadgeChange]="index" > {{tag}}</span>
