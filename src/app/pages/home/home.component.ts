@@ -14,13 +14,9 @@ export class HomeComponent implements OnInit,OnDestroy {
   constructor(private recipeService:RecipeService) { }
 
   ngOnInit(): void {
-   this.subscription$= this.recipeService.getTopRecipes().subscribe((response:any)=>{
+   this.subscription$= this.recipeService.getRecipes().subscribe((response:any)=>{
       console.log("recipe obtains of servoce ",response);
-      this.recipes=response.default as any;
-    /*   console.log("parseo a json: ",JSON.parse(response));
-      this.recipes=JSON.parse(response) ; */
-      /* this.recipes=response;*/
-      this.recipes.forEach(recipe=>console.log(recipe.id)); 
+      this.recipes=response;
     });
   }
 ngOnDestroy(): void {

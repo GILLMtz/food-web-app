@@ -15,15 +15,28 @@ private url='assets/data/recipes.mock.json';
       console.log(dataRaw);
   }
 
-  getTopRecipes():Observable<any>{
 
-     return of(dataRaw);
-  }
   getRecipeById(id:number):Observable<any>{
 console.log("procesando getRecipeId ",(dataRaw as any).default);
     let recipe=((dataRaw as any).default).filter((r:any)=> r.id==id);
     console.log('Recipe obtenida',recipe);
     return of(recipe[0]);
+  }
+  getRecipes( ):Observable<any>{
+        let recipe=((dataRaw as any).default);
+        console.log('Recipe obtenidas',recipe);
+        return of(recipe);
+      }
+  getTopRecipes(maxRecipes:number):Observable<any>{
+    let recipesSum=0;
+    let recipes=((dataRaw as any).default).filter((r:any,index:number,array:Array<any>)=>{
+      if(recipesSum<=maxRecipes){
+        recipesSum++;
+        return r;
+      }
+    });
+    console.log("recetas filtradas ",recipes);
+    return of(recipes);
   }
 
 }
