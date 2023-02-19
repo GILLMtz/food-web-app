@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  Input, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardOverlay } from 'src/app/models/card-overlay.model';
 
@@ -8,9 +8,13 @@ import { CardOverlay } from 'src/app/models/card-overlay.model';
   styleUrls: ['./card-overlay-detail.component.scss']
 })
 export class CardOverlayDetailComponent implements OnInit {
+ 
+
  @Input() cardConfig!:CardOverlay;
   constructor(private router:Router) { }
 
+  maxLengthTitle=27;
+  maxLengthDescription=254;
   ngOnInit(): void {   
   }
   seeDetail(){

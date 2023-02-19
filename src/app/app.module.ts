@@ -10,6 +10,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { BadgeChangeDirective } from './directives/badge-change.directive';
 import { RecepiDetailComponent } from './pages/recepi-detail/recepi-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
