@@ -1,8 +1,8 @@
 <div class="recipe-detail">
     <h1 class="recipe-detail__title">{{recipe.title}}</h1>
     <ul class="recipe-detail__tags">
-        <li *ngFor="let tag of recipe.tags">
-            <span class="badge text-bg-light">{{tag}}</span>
+        <li *ngFor="let tag of recipe.tags;index as index">
+            <span  [appBadgeChange]="index" >{{tag}}</span>
         </li>
     </ul>
     <p class="recipe-detail__description">
