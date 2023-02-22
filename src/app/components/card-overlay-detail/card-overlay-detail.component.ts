@@ -13,14 +13,26 @@ export class CardOverlayDetailComponent implements OnInit {
  @Input() cardConfig!:CardOverlay;
   constructor(private router:Router) { }
 
-  maxLengthTitle=27;
-  maxLengthDescription=254;
-  ngOnInit(): void {   
+  public maxLengthTitle=33;
+  public maxLengthDescription=100;
+  public maxTags=4;
+  ngOnInit(): void {
+    this.filterTags();
   }
+
+  filterTags(){
+    let numTags=0;
+    this.cardConfig.tags=this.cardConfig.tags?.filter((tag:any)=>{
+      if(numTags<this.maxTags){
+        numTags++;
+        return tag;
+      }
+    }); 
+  }
+
   seeDetail(){
     let idRecipe=this.cardConfig.id;
     this.router.navigate(['receta/',idRecipe ]);
- 
   }
 
 }

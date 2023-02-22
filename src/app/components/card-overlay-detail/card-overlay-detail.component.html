@@ -5,17 +5,16 @@
     </div>
     <div class=" card-overlay-detail__info">
 
-        <p class="card-overlay-detail__info-description">{{cardConfig.description}}</p>
+        <p class="card-overlay-detail__info-description">
+            {{cardConfig.description |slice:0:maxLengthDescription }}</p>
 
         <h5 class="card-overlay-detail__info-title">
-            <a [routerLink]="['/receta/',cardConfig.id]" routerLinkActive="active"> {{cardConfig.title}} </a>
+            <a [routerLink]="['/receta/',cardConfig.id]" routerLinkActive="active"> 
+                {{cardConfig.title  | slice:0:maxLengthTitle}}</a>
         </h5>
         <ul class="card-overlay-detail__info-tags-list">
             <li *ngFor="let tag of cardConfig.tags;index as index">
                 <span [appBadgeChange]="index"> {{tag}}</span>
-               <!--  <span class="badge bg-dark"> {{tag}}</span> -->
-<!--                 <span class="badge bg-light text-dark">Light</span>
-                <span class="badge bg-dark">Dark</span> -->
             </li>
         </ul>
     </div>

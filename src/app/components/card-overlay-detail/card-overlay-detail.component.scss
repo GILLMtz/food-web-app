@@ -26,7 +26,7 @@
     }
 
     &__info {
-       
+
         width: 100%;
         position: relative;
         color: var(--color-white);
@@ -37,12 +37,13 @@
         flex-direction: column;
         justify-content: flex-end;
         margin-top: var(--margin_recommendations-card-overlay);
- 
+
         &-title {
             margin-bottom: 3%;
             opacity: 0.9;
             text-align: center;
-            a{
+
+            a {
                 color: inherit;
                 font-weight: 700;
                 text-decoration: none;
@@ -56,13 +57,14 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            li:not(:nth-last-child(1)){
+
+            li:not(:nth-last-child(1)) {
                 margin: 1%;
             }
         }
 
 
-        &-description{
+        &-description {
             opacity: 0;
         }
 
@@ -74,9 +76,11 @@
         position: absolute;
         top: 1rem;
         right: 5px;
+
         button {
             opacity: 0.5;
             padding: 10%;
+
             svg {
                 height: 1.8em;
                 width: 1.8em;
@@ -88,41 +92,54 @@
         position: absolute;
         content: ' ';
         background: #48383873;
-        background: #000000a1;//add
+        background: #000000a1; //add
         background: #f1f1f1f2;
         z-index: -1;
-        height: 41%;
+        height: 45%;
         width: 100%;
         bottom: 0;
         left: 0;
     }
-    &:hover &__info{
+
+    &:hover &__info {
         color: var(--color-white);
-        &-title {
-            color:   #ffbc65;;
+
+        &-title:hover {
+            text-decoration: underline;
         }
-/*         &-tags-list li span.badge {
-            color: black;
-           
-            background: var(--bs-light-rgb) !important;
-        } */
-    }
-    &:hover &__info::after,&.active &__info::after{
-        background: #000000a1;
-        height: 100%;
-        transition: all 0.5s;
-        opacity: 1;
-    }
-     &:hover &__info-description,&.active &__info-description{
-        opacity: 1;
-         
-    }
 
-    &:hover &__options button {
-        opacity: 1;
+        &-tags-list li span.badge,
+        .text-bg-primary,
+        .text-bg-secondary,
+        .text-bg-success,
+        .text-bg-danger,
+        .text-bg-warning,
+        .text-bg-info,
+        .text-bg-dark{
+        color: black !important;
+  /*       color: white !important; */
+        
+        background: RGBA(var(--bs-light-rgb),var(--bs-bg-opacity,1)) !important
     }
+}
 
+&:hover &__info::after,
+&.active &__info::after {
+    background: #000000a1;
+    height: 100%;
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+&:hover &__info-description,
+&.active &__info-description {
+    opacity: 1;
 
 }
 
+&:hover &__options button {
+    opacity: 1;
+}
 
+
+}

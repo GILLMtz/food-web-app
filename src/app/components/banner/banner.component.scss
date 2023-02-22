@@ -55,6 +55,9 @@
 @media screen and (max-width: 768px) {
     .banner {
         --height_banner-caroulse: 400px;
+        .carousel-caption-btn{
+            opacity: 1;
+        }
     }   
 }
 @media screen and (max-width: 540px) {
