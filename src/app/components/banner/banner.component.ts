@@ -12,6 +12,9 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class BannerComponent implements OnInit ,OnDestroy{
   public topRecipes:Array<Recipe>=[];
   private topRecipes$!:Subscription;
+
+  public maxLengthTitle=33;
+  public maxLengthDescription=100;
   constructor(private recipeService:RecipeService,private router:Router) { }
 
   ngOnInit(): void {

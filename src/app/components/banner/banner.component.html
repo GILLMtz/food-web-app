@@ -6,8 +6,8 @@
           data-bs-interval="10000">
             <img [src]="recipe.cover" class="d-block w-100" alt="...">
             <div class="carousel-caption ">
-                <h5>{{recipe.title}}</h5>
-                <p>{{recipe.description}}</p>
+                <h5>{{recipe.title | slice:0:maxLengthTitle}}</h5>
+                <p>{{recipe.description | slice:0:maxLengthDescription}}</p>
                 <button class="btn btn-light carousel-caption-btn" (click)="goToDetail(recipe.id)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-ticket-detailed" viewBox="0 0 16 16">
