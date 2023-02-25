@@ -1,7 +1,7 @@
 [
     {
         "id":0,
-        "title":"Bisteck con chile negro",
+        "title":"Bisteces en chile pasilla",
         "description":"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         "steps":["Lavar los chiles negros",
         "Retirar las semillas de los chiles negros",
@@ -16,12 +16,12 @@
     ,"chile negro","bisteck"],
         "tags":["Mole","Guisado","Rapida Preparación"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/bisteces-en-chile-pasilla.jpg"
 
     },
     {
         "id":1,
-        "title":"Bisteck con chile negro",
+        "title":"Bisteces en salsa verde",
         "description":"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         "steps":["Lavar los chiles negros",
         "Retirar las semillas de los chiles negros",
@@ -36,7 +36,7 @@
     ,"chile negro","bisteck"],
         "tags":["Mole","Guisado","Rapida Preparación"],
         "link":"",
-        "cover":"./assets/images/chilaquiles-verdes.jpg"
+        "cover":"./assets/images/bisteces-en-salsa-verde.jpg"
 
     },
     {
@@ -47,7 +47,7 @@
         "ingredients":[],
         "tags":["Mole"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/enchiladas-de-mole-negro.webp"
 
     },
     {
@@ -78,7 +78,7 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/tostadas-de-ceviche-de-atun.jpg"
 
     },
     {
@@ -89,7 +89,7 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/tostadas-de-camaron.jpg"
 
     },
     {
@@ -100,7 +100,7 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/tostadas-de-pulpo.jpg"
 
     },
     {
@@ -111,7 +111,7 @@
         "ingredients":[],
         "tags":["Tacos"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/tacos-dorados-de-picadillo.jpg"
 
     }
     ,    {
@@ -122,7 +122,7 @@
         "ingredients":[],
         "tags":["Tacos"],
         "link":"",
-        "cover":"./assets/images/salad.jpg"
+        "cover":"./assets/images/tacos-dorados-de-pollo.jpg"
 
     }
 ]

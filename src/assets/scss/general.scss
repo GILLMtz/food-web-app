@@ -9,6 +9,8 @@ html,body{
     #F5F4FC 96.51385139598547%, #FFFFFF 98.87484076180397%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    max-width: var(--max-width_body);
+    margin:auto
  }
 
 * img{
