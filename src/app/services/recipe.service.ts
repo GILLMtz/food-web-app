@@ -10,11 +10,16 @@ import { of } from 'rxjs';
 export class RecipeService {
 private url='assets/data/recipes.mock.json';
   constructor(private httpClient:HttpClient) { 
-  /*   ((dataRaw?.default) as any).filter((recipe:any)=>recipe.id==0
-      ) */
-      console.log(dataRaw);
   }
-
+  getRecipeByTerm(term:string):Observable<any>{
+  
+    /* console.log("procesando getRecipeId ",(dataRaw as any).default); */
+        let recipe=((dataRaw as any).default).filter((r:any)=> 
+        r.title.toLowerCase().includes(term.toLowerCase())|| 
+        r.description.toLowerCase().includes(term.toLowerCase()));
+       /*  console.log('Recipe obtenida',recipe); */
+        return of(recipe);
+      }
 
   getRecipeById(id:number):Observable<any>{
 console.log("procesando getRecipeId ",(dataRaw as any).default);

@@ -1,17 +1,15 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
 import {Subscription,Observable,of} from 'rxjs';
-import { Recipe } from 'src/app/models/recipe.model';
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.scss']
 })
-export class HomeComponent  {
-  constructor(){}
-   
-/*   public recipes!:Array<Recipe>;
+export class SearchResultsComponent implements OnInit {
+
+  public recipes!:Array<Recipe>;
   private subscription$!:Subscription;
   constructor(private recipeService:RecipeService) { }
 
@@ -24,13 +22,15 @@ export class HomeComponent  {
 ngOnDestroy(): void {
   this.subscription$.unsubscribe();
 }
-receiveData(event:string):void{
-   console.log("reecibiendo datos");
-    this.recipeService.getRecipeByTerm(event).subscribe(
+receiveData(event:any):void{
+  console.log("busqueda recibida ",event);
+  let term=event.term;
+   console.log("reecibiendo datos ",term);
+    this.recipeService.getRecipeByTerm(term).subscribe(
     (request:any)=>{
       this.recipes=request;
     }
    );
-} */
+}
 
 }

@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BannerComponent } from './components/banner/banner.component';
 import { BadgeChangeDirective } from './directives/badge-change.directive';
 import { RecepiDetailComponent } from './pages/recepi-detail/recepi-detail.component';
+import { SearchMenuComponent } from './components/search-menu/search-menu.component';
+import { FormsModule } from '@angular/forms';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 
 @NgModule({
@@ -18,11 +21,14 @@ import { RecepiDetailComponent } from './pages/recepi-detail/recepi-detail.compo
     CardOverlayDetailComponent,
     BannerComponent,
     BadgeChangeDirective,
-    RecepiDetailComponent
+    RecepiDetailComponent,
+    SearchMenuComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
