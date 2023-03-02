@@ -3,7 +3,7 @@
         <div class="filter__controls-input">
           <input [(ngModel)]="src" (ngModelChange)="callSearch($event)"   class="form-control" type="text" id="mainSearch" placeholder="Buscar">
           <ul class="filter__controls-input-top-results" *ngIf="topSearchResults$!==undefined">
-            <li *ngFor="let result of topSearchResults$ | async">  
+            <li *ngFor="let result of topSearchResults$ | async" (click)="seeDetail(result.id)">  
               <div>
                 <img [src]="result.cover" alt="">
               </div>

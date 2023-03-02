@@ -1,4 +1,5 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
 import { SearchMenu } from 'src/app/models/search-menu.model';
@@ -18,7 +19,7 @@ export class SearchMenuComponent implements OnInit {
   //Array<Recipe>
 
   searchMenu!:SearchMenu;
-  constructor(private recipeService:RecipeService) { 
+  constructor(private recipeService:RecipeService,private router:Router) { 
     console.log("topSearchResults ",this.topSearchResults$);
     this.searchMenu={
       all:false,
@@ -45,5 +46,9 @@ export class SearchMenuComponent implements OnInit {
     }else{
       this.topSearchResults$=of([]);
     }
+  }
+
+  seeDetail(idRecipe:number){
+    this.router.navigate(['receta/',idRecipe ]);
   }
 }
