@@ -11,12 +11,21 @@ export class RecipeService {
 private url='assets/data/recipes.mock.json';
   constructor(private httpClient:HttpClient) { 
   }
-  getRecipeByTerm(term:string):Observable<any>{
-  
+  getRecipeByTerm(term:string,maxRecipes=-1):Observable<any>{
+    let recipeCount=0;
     /* console.log("procesando getRecipeId ",(dataRaw as any).default); */
         let recipe=((dataRaw as any).default).filter((r:any)=> 
         r.title.toLowerCase().includes(term.toLowerCase())|| 
-        r.description.toLowerCase().includes(term.toLowerCase()));
+        r.description.toLowerCase().includes(term.toLowerCase())).
+        filter((recipe:any)=>{
+          if( maxRecipes<0){
+            return recipe;
+          }
+          if(recipeCount<maxRecipes){
+            recipeCount++;
+            return recipe;
+          }   
+        });
        /*  console.log('Recipe obtenida',recipe); */
         return of(recipe);
       }

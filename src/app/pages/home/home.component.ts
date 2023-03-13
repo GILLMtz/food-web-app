@@ -9,28 +9,16 @@ import { Recipe } from 'src/app/models/recipe.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent  {
-  constructor(){}
-   
-/*   public recipes!:Array<Recipe>;
-  private subscription$!:Subscription;
-  constructor(private recipeService:RecipeService) { }
+  constructor(private recipeService:RecipeService){}
 
-  ngOnInit(): void {
-   this.subscription$= this.recipeService.getRecipes().subscribe((response:any)=>{
-      console.log("recipe obtains of servoce ",response);
-      this.recipes=response;
-    });
+  receiveData(event:any):void{
+    console.log("busqueda recibida ",event);
+    let term=event.term;
+     console.log("reecibiendo datos ",term);
+      this.recipeService.getRecipeByTerm(term).subscribe(
+      (request:any)=>{
+       /*  this.recipes=request; */
+      }
+     );
   }
-ngOnDestroy(): void {
-  this.subscription$.unsubscribe();
-}
-receiveData(event:string):void{
-   console.log("reecibiendo datos");
-    this.recipeService.getRecipeByTerm(event).subscribe(
-    (request:any)=>{
-      this.recipes=request;
-    }
-   );
-} */
-
 }

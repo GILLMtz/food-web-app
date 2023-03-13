@@ -18,13 +18,15 @@ export class RecepiDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     let params$ = this.getIdOfUrl();
-    let recipe$ = this.getRecipe();
     this.subscribes$.push(params$);
-    this.subscribes$.push(recipe$);
   }
   getIdOfUrl(): Subscription {
     return this.route.params.
-      subscribe((params: Params) => this.IdRecipe = parseInt(params['id']));
+      subscribe((params: Params) => 
+      {this.IdRecipe = parseInt(params['id']);
+        console.log("change params ");
+        this.subscribes$.push(this.getRecipe());
+      });
   }
   getRecipe(): Subscription {
     return this.recipeService.getRecipeById(this.IdRecipe).

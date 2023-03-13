@@ -1,0 +1,48 @@
+<!-- Scrollable modal -->
+
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+             
+                <div class="recipe-detail" *ngIf="recipe">
+                    <h1 class="recipe-detail__title">{{recipe.title}}</h1>
+                    <ul class="recipe-detail__tags">
+                        <li *ngFor="let tag of recipe.tags;index as index">
+                            <span [appBadgeChange]="index">{{tag}}</span>
+                        </li>
+                    </ul>
+                    <p class="recipe-detail__description">
+                        {{recipe.description}}
+                    </p>
+                    <div class="recipe-detail-content">
+                        <div class="recipe-detail-content__primary">
+                            <h2>Ingredientes</h2>
+                            <ul>
+                                <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+                            </ul>
+
+                            <h2>Elaboraci&oacute;n
+                            </h2>
+                            <ul>
+                                <li *ngFor="let step of recipe.steps">{{step}}</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-detail-content__second">
+                            <div class="recipe-detail-content__second-img">
+                                <img [src]="recipe.cover" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                   <!--  <button class="btn btn-dark" (click)="goBack()">Regresar</button> -->
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

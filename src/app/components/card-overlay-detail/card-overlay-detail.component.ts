@@ -32,7 +32,7 @@ export class CardOverlayDetailComponent implements OnInit {
 
   seeDetail(){
     let idRecipe=this.cardConfig.id;
-    this.router.navigate(['receta/',idRecipe ]);
+    this.router.navigate(['inicio/recetas/',idRecipe ]);
   }
 
 }

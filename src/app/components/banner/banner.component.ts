@@ -12,7 +12,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class BannerComponent implements OnInit ,OnDestroy{
   public topRecipes:Array<Recipe>=[];
   private topRecipes$!:Subscription;
-
+  public recipeSelected!:Recipe;
   public maxLengthTitle=33;
   public maxLengthDescription=100;
   constructor(private recipeService:RecipeService,private router:Router) { }
@@ -27,7 +27,9 @@ export class BannerComponent implements OnInit ,OnDestroy{
   ngOnDestroy(): void {
     this.topRecipes$.unsubscribe();
   }
-  goToDetail(id:number){
-this.router.navigate(['receta',id]);
+  goToDetail(recipe:Recipe){
+/* this.router.navigate(['receta',id]); */
+console.log("receta a mostrar ", recipe);
+this.recipeSelected=recipe;
   }
 }

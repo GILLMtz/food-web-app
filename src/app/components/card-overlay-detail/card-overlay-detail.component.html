@@ -9,7 +9,7 @@
             {{cardConfig.description |slice:0:maxLengthDescription }}</p>
 
         <h5 class="card-overlay-detail__info-title">
-            <a [routerLink]="['/receta/',cardConfig.id]" routerLinkActive="active"> 
+            <a [routerLink]="['./','recetas',cardConfig.id]" routerLinkActive="active"> 
                 {{cardConfig.title  | slice:0:maxLengthTitle}}</a>
         </h5>
         <ul class="card-overlay-detail__info-tags-list">

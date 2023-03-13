@@ -1,6 +1,11 @@
 <div class="main-content">
     <div class="content">
         <app-banner></app-banner>
-        <app-search-results></app-search-results>
+        <!-- <app-search-results></app-search-results> -->
+
+        <h2 class="title">Men&uacute;</h2>
+        <app-search-menu (callbackData)="receiveData($event)"></app-search-menu>
+
+        <router-outlet></router-outlet>
     </div>
 </div>
