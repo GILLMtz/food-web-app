@@ -2,7 +2,7 @@
     --heigth_recommendations-card-img: 200px;
     --heigth_recommendations-card: 390px;
     --max-width_recommendations-card: 390px;
-    --margin_recommendations-card-overlay: 8em;
+    --margin_recommendations-card-overlay: 8em; //8em
 
     position: relative;
     min-height: var(--heigth_recommendations-card);
@@ -28,11 +28,8 @@
     &__info {
 
         width: 100%;
-        position: relative;
-        color: var(--color-white);
         color: black;
         padding: 0 1rem 0.5rem 1rem;
-        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -56,7 +53,11 @@
             margin: 0;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            flex-direction: column;
 
             li:not(:nth-last-child(1)) {
                 margin: 1%;
@@ -75,7 +76,7 @@
         justify-content: center;
         position: absolute;
         top: 1rem;
-        right: 5px;
+        right: 1rem;
 
         button {
             opacity: 0.5;
@@ -85,23 +86,33 @@
                 height: 1.8em;
                 width: 1.8em;
             }
+
+            span {
+                display: none;
+            }
         }
     }
 
     &__info::after {
         position: absolute;
         content: ' ';
-        background: #48383873;
-        background: #000000a1; //add
         background: #f1f1f1f2;
         z-index: -1;
-        height: 45%;
+        height: 25%;
         width: 100%;
         bottom: 0;
         left: 0;
     }
 
-    &:hover &__info {
+    &__short-info {
+        font-size: 12px;
+        font-weight: 300;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &:not(.card-overlay-detail--horizontal):hover &__info {
         color: var(--color-white);
 
         &-title:hover {
@@ -115,31 +126,219 @@
         .text-bg-danger,
         .text-bg-warning,
         .text-bg-info,
-        .text-bg-dark{
-        color: black !important;
-  /*       color: white !important; */
-        
-        background: RGBA(var(--bs-light-rgb),var(--bs-bg-opacity,1)) !important
+        .text-bg-dark {
+            color: black !important;
+            background: RGBA(var(--bs-light-rgb), var(--bs-bg-opacity, 1)) !important
+        }
+    }
+
+    &:hover &__info::after,
+    &.active &__info::after {
+        background: #000000a1;
+        height: 100%;
+        transition: all 0.5s;
+        opacity: 1;
+    }
+
+    &:hover &__info-description,
+    &.active &__info-description {
+        opacity: 1;
+    }
+
+    &:hover &__options button {
+        opacity: 1;
+    }
+
+
+}
+
+.card-overlay-detail--horizontal {
+    --heigth_recommendations-card-img: 200px;
+    --heigth_recommendations-card: 200px;
+    --max-width_recommendations-card: 390px;
+    --margin_recommendations-card-overlay: 8em;
+    --max-width_recommendations-card-img: 390px;
+
+    width: 100%;
+    max-height: var(--heigth_recommendations-card);
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    text-decoration: none;
+
+    .card-overlay-detail {
+        &__img {
+            max-width: var(--max-width_recommendations-card-img);
+            width: 100%;
+            position: static;
+            transition: all 0.5s;
+        }
+
+        &__info {
+            color: black;
+            margin-top: 0px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            position: relative;
+            padding: 1rem 1rem 0.5rem 1rem;
+
+            &-title {
+                grid-column: 1 / 3;
+                grid-row: 1 / 1;
+                margin-bottom: 0;
+                justify-self: center;
+                align-self: center;
+            }
+
+            &-tags-list {
+                width: 90%;
+                grid-column: 1 / 3;
+                grid-row: 4 / 5;
+                justify-self: center;
+                align-self: center;
+
+                align-items: center;
+                position: static;
+                flex-direction: row;
+            }
+
+            &-description {
+                opacity: 1;
+                grid-column: 1 / 3;
+                grid-row: 3 / 4;
+                justify-self: center;
+                align-self: center;
+            }
+        }
+
+        &__short-info {
+            grid-column: 1 / 3;
+            grid-row: 2 / 3;
+            margin-bottom: 0;
+            justify-self: center;
+            align-self: center;
+            width: 30%;
+            margin: auto;
+        }
+
+        &__info::after {
+            height: 100%;
+            background: none;
+        }
+
+        &__options {
+            display: none;
+        }
+    }
+
+    &:hover .card-overlay-detail__info {
+        color: rgb(0, 0, 0);
+
+    }
+
+    &:hover .card-overlay-detail__info::after,
+    &.active .card-overlay-detail__info::after {
+        height: 100%;
+        transition: all 0.5s;
+        opacity: 1;
+        background: white;
+        border-color: #cfd0d1;
+        outline: 0;
+        box-shadow: 0px 2px 12px 0.25rem rgba(182, 182, 182, 0.25);
+    }
+
+    &:hover .card-overlay-detail__options button {
+        background: #000000a1;
+        transition: height 1s;
+        color: white;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .card-overlay-detail--horizontal {
+        .card-overlay-detail {
+            &__img {
+                max-width: calc(var(--max-width_recommendations-card-img) / 2);
+                width: 100%;
+                position: static;
+                transition: all 0.5s;
+            }
+            &__short-info {
+                width: 80%;
+                margin: auto;
+            }
+        }
     }
 }
 
-&:hover &__info::after,
-&.active &__info::after {
-    background: #000000a1;
-    height: 100%;
-    transition: all 0.5s;
-    opacity: 1;
+@media screen and (max-width: 576px) {
+    .card-overlay-detail {
+        --heigth_recommendations-card: 280px;
+    }
+    .card-overlay-detail--horizontal {
+        .card-overlay-detail {
+            --heigth_recommendations-card: 280px;
+            min-height: var(--heigth_recommendations-card);
+            &__img {
+                max-width: calc(var(--max-width_recommendations-card-img) / 4);
+                width: 100%;
+                position: static;
+                transition: all 0.5s;
+            }
+        }
+    }
 }
 
-&:hover &__info-description,
-&.active &__info-description {
-    opacity: 1;
+@media screen and (max-width: 460px) {
+    .card-overlay-detail--horizontal {
+        .card-overlay-detail {
+            &__img {
+                transition: all 0.5s;
+                position: absolute;
+                max-width: 100%;
+                z-index: -2;
+            }
 
-}
+            &__info {
+                color: white;
 
-&:hover &__options button {
-    opacity: 1;
-}
+                &-title {
+                    grid-column: 1 / 3;
+                    grid-row: 2 / 3;
+                    margin-bottom: 0;
+                    justify-self: center;
+                    align-self: center;
+                }
 
+                &-description {
+                    display: none;
+                }
+            }
 
+            &__short-info {
+                grid-column: 1 / 3;
+                grid-row: 3 / 4;
+                width: 80%;
+                margin: auto;
+            }
+
+            &__info::after {
+                background: #0003;
+                margin-top: var(--margin_recommendations-card-overlay);
+            }
+        }
+
+        &:hover .card-overlay-detail__info::after,
+        &.active .card-overlay-detail__info::after {
+            background: #0003;
+        }
+
+        &:hover .card-overlay-detail__info {
+            color: white;
+        }
+    }
 }

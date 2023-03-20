@@ -7,4 +7,9 @@ export interface Recipe{
     tags:Array<any>,
     link:string,
     cover:string,
+
+    portion?:number,
+    duration?:string
+    difficulty?:string //fast 
+
 }

@@ -22,7 +22,7 @@ export class CardOverlayDetailComponent implements OnInit {
 
   filterTags(){
     let numTags=0;
-    this.cardConfig.tags=this.cardConfig.tags?.filter((tag:any)=>{
+    this.cardConfig.recipe.tags=this.cardConfig.recipe.tags?.filter((tag:any)=>{
       if(numTags<this.maxTags){
         numTags++;
         return tag;
@@ -31,7 +31,7 @@ export class CardOverlayDetailComponent implements OnInit {
   }
 
   seeDetail(){
-    let idRecipe=this.cardConfig.id;
+    let idRecipe=this.cardConfig.recipe.id;
     this.router.navigate(['inicio/recetas/',idRecipe ]);
   }
 

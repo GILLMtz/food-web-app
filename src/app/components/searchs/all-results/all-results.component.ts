@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CardOverlay } from 'src/app/models/card-overlay.model';
 import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -11,21 +12,16 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class AllResultsComponent implements OnInit {
   
-  public recipes!:Array<Recipe>;
+  public recipeCards!:Array<CardOverlay>;
   private subscription$!:Subscription;
-  constructor(private recipeService:RecipeService,private searchService:SearchService) { }
+  constructor(private recipeService:RecipeService) { }
 
   ngOnInit(): void {
-    this.searchService.getData().subscribe
-    (
-      (request:any)=>{
-        console.log("procensando query.....");
-        console.log("query obtenida mediante el searchservice ",request)
-      }
-    );
+ 
    this.subscription$= this.recipeService.getRecipes().subscribe((response:any)=>{
-      console.log("recipe obtains of servoce ",response);
-      this.recipes=response;
+      this.recipeCards= response.map((recipe:Recipe)=>{
+        return {recipe:recipe}
+      });
     });
 
   }

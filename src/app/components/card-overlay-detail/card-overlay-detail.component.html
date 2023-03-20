@@ -1,25 +1,43 @@
-<div [ngClass]="{'h-100':cardConfig.fullHeight==undefined,'card-overlay-detail':true}">
+<div *ngIf="cardConfig.horizontal==undefined" [ngClass]="{'h-100':cardConfig.fullHeight==undefined,'card-overlay-detail':true,'card-overlay-detail--horizontal':cardConfig.horizontal}">
 
     <div class=" card-overlay-detail__img">
-        <img [src]="cardConfig.cover" class="" alt="...">
+        <img [src]="cardConfig.recipe.cover" class="" alt="...">
     </div>
     <div class=" card-overlay-detail__info">
 
         <p class="card-overlay-detail__info-description">
-            {{cardConfig.description |slice:0:maxLengthDescription }}</p>
+            {{cardConfig.recipe.description |slice:0:maxLengthDescription }}</p>
 
         <h5 class="card-overlay-detail__info-title">
-            <a [routerLink]="['./','recetas',cardConfig.id]" routerLinkActive="active"> 
-                {{cardConfig.title  | slice:0:maxLengthTitle}}</a>
+            <a [routerLink]="['/inicio','recetas',cardConfig.recipe.id]" routerLinkActive="active"> 
+                {{cardConfig.recipe.title  | slice:0:maxLengthTitle}}</a>
         </h5>
         <ul class="card-overlay-detail__info-tags-list">
-            <li *ngFor="let tag of cardConfig.tags;index as index">
+            <li *ngFor="let tag of cardConfig.recipe.tags;index as index">
                 <span [appBadgeChange]="index"> {{tag}}</span>
             </li>
-        </ul>
-    </div>
-    <div class=" card-overlay-detail__options">
 
+        </ul>
+        <div class="card-overlay-detail__short-info">
+            <span>  
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                    <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                  </svg>
+                {{cardConfig.recipe.duration}} min</span>
+            <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-down-arrow" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5Z"/>
+              </svg>
+                {{cardConfig.recipe.difficulty}}</span>
+            <span>  
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                  </svg>
+                {{cardConfig.recipe.portion}} </span>
+        </div>
+    </div>
+
+    <div class=" card-overlay-detail__options">
         <button class="card-options__detail btn btn-light" (click)="seeDetail()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-ticket-detailed" viewBox="0 0 16 16">
@@ -28,9 +46,67 @@
                 <path
                     d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z" />
             </svg>
-
-
+          
         </button>
     </div>
 
 </div>
+
+
+ 
+ 
+    <a *ngIf="cardConfig.horizontal" [routerLink]="['/inicio','recetas',cardConfig.recipe.id]" routerLinkActive="active"
+    [ngClass]="{'h-100':cardConfig.fullHeight==undefined,'card-overlay-detail':true,'card-overlay-detail--horizontal':cardConfig.horizontal}"
+    >
+
+        <div class=" card-overlay-detail__img">
+            <img [src]="cardConfig.recipe.cover" class="" alt="...">
+        </div>
+        <div class=" card-overlay-detail__info">
+    
+            <p class="card-overlay-detail__info-description">
+                {{cardConfig.recipe.description |slice:0:maxLengthDescription }}</p>
+    
+            <h5 class="card-overlay-detail__info-title">
+                <a [routerLink]="['/inicio','recetas',cardConfig.recipe.id]" routerLinkActive="active"> 
+                    {{cardConfig.recipe.title  | slice:0:maxLengthTitle}}</a>
+            </h5>
+            <ul class="card-overlay-detail__info-tags-list">
+                <li *ngFor="let tag of cardConfig.recipe.tags;index as index">
+                    <span [appBadgeChange]="index"> {{tag}}</span>
+                </li>
+    
+            </ul>
+            <div class="card-overlay-detail__short-info">
+                <span>  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                        <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                      </svg>
+                    {{cardConfig.recipe.duration}} min</span>
+                <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-down-arrow" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5Z"/>
+                  </svg>
+                    {{cardConfig.recipe.difficulty}}</span>
+                <span>  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                      </svg>
+                    {{cardConfig.recipe.portion}} </span>
+            </div>
+        </div>
+    
+        <div class=" card-overlay-detail__options">
+            <button class="card-options__detail btn btn-light" (click)="seeDetail()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                    <path
+                        d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z" />
+                    <path
+                        d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z" />
+                </svg>
+              
+            </button>
+        </div>
+    
+    </a>

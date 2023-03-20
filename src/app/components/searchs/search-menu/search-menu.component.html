@@ -7,7 +7,7 @@
         </svg>
     </button>
         <div class="filter__controls-input">
-          <input [(ngModel)]="src" (ngModelChange)="callSearch($event)"   class="form-control search-bar" type="text" id="mainSearch" placeholder="Buscar"
+          <input [(ngModel)]="src" #searchBar (ngModelChange)="callSearch($event)"   class="form-control search-bar" type="text" id="mainSearch" placeholder="Buscar"
           (keydown)="move($event)">
           <ul class="filter__controls-input-top-results" *ngIf="topSearchResults$!==undefined">
             <li *ngFor="let result of topSearchResults$ | async" (click)="seeDetail(result.id)">  
@@ -31,7 +31,7 @@
 
     </div>
 
-    <ul class="filter__list">
+<!--     <ul class="filter__list">
         <li class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkFilter_1">
             <label class="form-check-label" for="checkFilter_1">
@@ -57,5 +57,5 @@
               Tacos
             </label>
           </li>
-    </ul>
+    </ul> -->
 </div>

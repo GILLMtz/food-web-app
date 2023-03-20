@@ -14,9 +14,12 @@
         "chile negro","bisteck",
         "chile negro","bisteck"
     ,"chile negro","bisteck"],
-        "tags":["Mole","Guisado","Rapida Preparación"],
+        "tags":["Mole","Guisado"],
         "link":"",
-        "cover":"./assets/images/bisteces-en-chile-pasilla.jpg"
+        "cover":"./assets/images/bisteces-en-chile-pasilla.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -34,9 +37,12 @@
         "chile negro","bisteck",
         "chile negro","bisteck"
     ,"chile negro","bisteck"],
-        "tags":["Mole","Guisado","Rapida Preparación"],
+        "tags":["Mole","Guisado"],
         "link":"",
-        "cover":"./assets/images/bisteces-en-salsa-verde.jpg"
+        "cover":"./assets/images/bisteces-en-salsa-verde.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -47,7 +53,10 @@
         "ingredients":[],
         "tags":["Mole"],
         "link":"",
-        "cover":"./assets/images/enchiladas-de-mole-negro.webp"
+        "cover":"./assets/images/enchiladas-de-mole-negro.webp",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -65,9 +74,12 @@
         "chile negro","bisteck",
         "chile negro","bisteck"
     ,"chile negro","bisteck"],
-        "tags":["Mole","Guisado","Rapida Preparación","Antojito"],
+        "tags":["Mole","Guisado","Antojito"],
         "link":"",
-        "cover":"./assets/images/tostadas-de-tinga.jpg"
+        "cover":"./assets/images/tostadas-de-tinga.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -78,7 +90,10 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/tostadas-de-ceviche-de-atun.jpg"
+        "cover":"./assets/images/tostadas-de-ceviche-de-atun.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -89,7 +104,10 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/tostadas-de-camaron.jpg"
+        "cover":"./assets/images/tostadas-de-camaron.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -100,7 +118,10 @@
         "ingredients":[],
         "tags":["Tostada"],
         "link":"",
-        "cover":"./assets/images/tostadas-de-pulpo.jpg"
+        "cover":"./assets/images/tostadas-de-pulpo.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     },
     {
@@ -111,7 +132,10 @@
         "ingredients":[],
         "tags":["Tacos"],
         "link":"",
-        "cover":"./assets/images/tacos-dorados-de-picadillo.jpg"
+        "cover":"./assets/images/tacos-dorados-de-picadillo.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     }
     ,    {
@@ -122,7 +146,10 @@
         "ingredients":[],
         "tags":["Tacos"],
         "link":"",
-        "cover":"./assets/images/tacos-dorados-de-pollo.jpg"
+        "cover":"./assets/images/tacos-dorados-de-pollo.jpg",
+        "portion":4,
+        "duration":192,
+        "difficulty":"fast"
 
     }
 ]

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/searchs/search-results/search-results.component';
 import { AllResultsComponent } from './components/searchs/all-results/all-results.component';
 import { RecipeModalComponent } from './components/detail/recipe-modal/recipe-modal.component';
+ 
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { RecipeModalComponent } from './components/detail/recipe-modal/recipe-mo
     SearchMenuComponent,
     SearchResultsComponent,
     AllResultsComponent,
-    RecipeModalComponent
+    RecipeModalComponent 
   ],
   imports: [
     BrowserModule,

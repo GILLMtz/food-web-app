@@ -1,55 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
-import {Subscription,Observable,of} from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
 import { SearchService } from 'src/app/services/search.service';
+import { CardOverlay } from 'src/app/models/card-overlay.model';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
+  private searchTermName = 'q';
+  public recipeCards!: Array<CardOverlay>;
+  private subscription$: Array<Subscription> = [];
+  private getResults$:Subscription=new Subscription();
+  private getQueryParams$=new Subscription();
 
-  public recipes!:Array<Recipe>;
-  private subscription$:Array< Subscription>=[];
-  public notFound:boolean=false;
-
-  constructor(private recipeService:RecipeService,private searchService:SearchService) { }
+  constructor(private recipeService: RecipeService, private searchService: SearchService
+    , private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.searchService.getData().subscribe(
-      (request:any)=>{
-        console.log("procensando query.....");
-        console.log("query obtenida mediante el searchservice ",request);
-        let {term, ...rest}=request;
-        console.log("termino para realizar la busqueda ",term);
-       if(term.length>0){
-         this.subscription$.push(   
-          this.recipeService.getRecipeByTerm(term).subscribe((response:any)=>{
-          console.log("recipe obtains of servoce ",response);
-          console.log('Recetas obtenidad al realizar busqueda especifica ',response);
-          this.recipes=response;
-        }))
-       }else{
-        this.notFound=true;
-       }
-      
-    }
-    );
+    this.getQueryParams$= this.getParams();
+    this.subscription$.push(this.getQueryParams$);
+    this.subscription$.push(this.getResults$);
   }
 
-ngOnDestroy(): void {
-  this.subscription$.forEach((sub:Subscription)=>sub.unsubscribe());
+getParams():Subscription{
+  return this.activatedRoute.queryParams.subscribe((params: any) => {
+     this.getResults$=(params.hasOwnProperty(this.searchTermName) && params[this.searchTermName] )? 
+     this.getResults(params[this.searchTermName]):new Subscription();
+  });
 }
-/* receiveData(event:any):void{
-  console.log("busqueda recibida ",event);
-  let term=event.term;
-   console.log("reecibiendo datos ",term);
-    this.recipeService.getRecipeByTerm(term).subscribe(
-    (request:any)=>{
-      this.recipes=request;
-    }
-   );
-} */
+
+  getResults(term:string):Subscription{
+     return  this.recipeService.getRecipeByTerm(term).subscribe((response: any) => {
+          this.recipeCards = response.map((r: Recipe) => {
+            return {recipe:r,horizontal: true}});
+        });
+  }
+
+
+  ngOnDestroy(): void {
+    this.subscription$.forEach((sub: Subscription) => sub.unsubscribe());
+  }
+  
 
 }
