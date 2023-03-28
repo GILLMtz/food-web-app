@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit,   ViewChild, ElementRef, AfterViewInit,  OnDestroy, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, of, pipe, Subscription } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
