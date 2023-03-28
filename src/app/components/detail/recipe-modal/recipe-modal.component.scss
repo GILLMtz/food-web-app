@@ -1,71 +1,96 @@
-.modal-dialog{
+.modal-dialog {
     max-width: 60%;
     position: relative;
 
-    .recipe-detail{
-        &__title{
+    .recipe-detail {
+        &__title {
             text-align: center;
         }
-        &__short-info{
+
+        &__short-info {
             list-style: none;
-         
+
             padding: 0;
             display: flex;
             width: 60%;
             justify-content: space-between;
             margin: auto;
         }
-        &__tags{
+
+        &__tags {
             list-style: none;
             list-style: none;
-          
+
             padding: 0;
             display: flex;
             width: 80%;
             margin: auto;
         }
-        &__tags li:not(:nth-last-child(1)){
+
+        &__tags li:not(:nth-last-child(1)) {
             margin-right: 1%;
         }
-        &__description{
-            margin:2% 0;
+
+        &__description {
+            margin: 2% 0;
         }
-        &-content__primary{
-            h2{
+
+        &-content__primary {
+            h2 {
                 font-size: 25px;
             }
-            &-ingredient{
+
+            &-ingredient {
                 list-style: none;
                 padding: 0;
                 display: flex;
                 flex-wrap: wrap;
+
                 li {
-                    padding:0 1%;
+                    padding: 0 1%;
                     line-height: 1.8em;
-                    span{
+
+                    span {
                         font-weight: 400;
                         font-size: 13px;
                     }
-                    li:hover span{
-                        font-size: 1em;
-                        transition: all 0.5 ease-in-out;
-                    }
-                }      
-  
+                }
+
+                li:hover span {
+                    font-size: 1em;
+                    transition: font-size 1s;
+
+                }
+
+                li:hover {
+                    background: #c77a16;
+                    color: white;
+                    transition: all 1s;
+                    border-radius: 5px;
+                }
             }
         }
     }
 }
-.btn-detail{
+
+.btn-detail {
     display: block;
     width: 80%;
     margin: 2% auto;
-    padding: 2%;
+    padding: 1.5%;
 }
 
 
 @media screen and (max-width: 768px) {
-    .modal-dialog{
+    .modal-dialog {
         max-width: 75%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .modal-dialog {
+        .recipe-detail__short-info {
+            width: 90%;
+        }
     }
 }
