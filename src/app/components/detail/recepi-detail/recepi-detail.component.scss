@@ -1,14 +1,41 @@
 .recipe-detail {
     --max-height_recipe-detail-content__second-img: 350px;
 
-    padding: 5% 10%;
+    padding: 1% 10%;
 
     &__title {
         text-align: center;
         font-size: 4.4vw;
     }
 
-    &__tags {
+    &__short-info{
+        list-style: none;
+     
+        padding: 0;
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+        margin: auto;
+    }
+    &__tags{
+        list-style: none;
+        list-style: none;
+      
+        padding: 0;
+        display: flex;
+        width: 80%;
+        margin: auto;
+    }
+    &__tags li:not(:nth-last-child(1)){
+        margin-right: 1%;
+    }
+    &__description{
+        margin:2% 0;
+    }
+
+
+
+/*     &__tags {
         list-style: none;
         display: flex;
         justify-content: center;
@@ -18,7 +45,7 @@
         :not(:nth-last-child(1)) {
             margin: 0 0.4%;
         }
-    }
+    } */
 }
 
 .recipe-detail-content {

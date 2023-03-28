@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/searchs/search-results/search-results.component';
 import { AllResultsComponent } from './components/searchs/all-results/all-results.component';
 import { RecipeModalComponent } from './components/detail/recipe-modal/recipe-modal.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { CardOverlayDetailHorizontalComponent } from './components/card-overlay-detail-horizontal/card-overlay-detail-horizontal.component';
  
 
 
@@ -28,7 +30,9 @@ import { RecipeModalComponent } from './components/detail/recipe-modal/recipe-mo
     SearchMenuComponent,
     SearchResultsComponent,
     AllResultsComponent,
-    RecipeModalComponent 
+    RecipeModalComponent,
+    TrashComponent,
+    CardOverlayDetailHorizontalComponent 
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,8 @@ export interface Recipe{
     cover:string,
 
     portion?:number,
-    duration?:string
+    duration?:string,
     difficulty?:string //fast 
+    weather?:number
 
 }

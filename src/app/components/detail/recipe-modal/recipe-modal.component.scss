@@ -1,0 +1,71 @@
+.modal-dialog{
+    max-width: 60%;
+    position: relative;
+
+    .recipe-detail{
+        &__title{
+            text-align: center;
+        }
+        &__short-info{
+            list-style: none;
+         
+            padding: 0;
+            display: flex;
+            width: 60%;
+            justify-content: space-between;
+            margin: auto;
+        }
+        &__tags{
+            list-style: none;
+            list-style: none;
+          
+            padding: 0;
+            display: flex;
+            width: 80%;
+            margin: auto;
+        }
+        &__tags li:not(:nth-last-child(1)){
+            margin-right: 1%;
+        }
+        &__description{
+            margin:2% 0;
+        }
+        &-content__primary{
+            h2{
+                font-size: 25px;
+            }
+            &-ingredient{
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    padding:0 1%;
+                    line-height: 1.8em;
+                    span{
+                        font-weight: 400;
+                        font-size: 13px;
+                    }
+                    li:hover span{
+                        font-size: 1em;
+                        transition: all 0.5 ease-in-out;
+                    }
+                }      
+  
+            }
+        }
+    }
+}
+.btn-detail{
+    display: block;
+    width: 80%;
+    margin: 2% auto;
+    padding: 2%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .modal-dialog{
+        max-width: 75%;
+    }
+}

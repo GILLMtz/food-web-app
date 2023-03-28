@@ -19,7 +19,8 @@
         "cover":"./assets/images/bisteces-en-chile-pasilla.jpg",
         "portion":4,
         "duration":192,
-        "difficulty":"fast"
+        "difficulty":"fast",
+        "weather":35
 
     },
     {
