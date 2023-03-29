@@ -1,9 +1,9 @@
 <div class="filter">
   <div class="filter__controls">
     <div class="filter__controls-input">
-      <input [(ngModel)]="src" #searchBar (ngModelChange)="callSearch($event)" class="form-control search-bar"
-        type="text" id="mainSearch" placeholder="Buscar" (keydown)="move($event)">
-      <ul class="filter__controls-input-top-results" *ngIf="topSearchResults$!==undefined">
+      <input [(ngModel)]="src"  #searchBar (ngModelChange)="callSearch($event)" class="form-control search-bar"
+        type="text" id="mainSearch" placeholder="Buscar" (keydown)="move($event)" (focus)="onFocus()">
+      <ul #topSearchResults class="filter__controls-input-top-results" >
         <li *ngFor="let result of topSearchResults$ | async" (click)="sendParticularSearch(result.id)">
           <div>
             <img [src]="result.cover" alt="">

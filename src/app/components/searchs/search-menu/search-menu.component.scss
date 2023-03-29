@@ -77,12 +77,11 @@
         border-radius: 76px 0% 0px 76px;
     }
 
-    input.form-control:focus+&__controls-input-top-results,
+    input[id="mainSearch"]:focus+&__controls-input-top-results,
     &__controls-input-top-results:hover {
         display: grid;
-    }
-
-
+     }
+ 
     &__controls-btn {
         display: block;
         padding: 0 1.5em;

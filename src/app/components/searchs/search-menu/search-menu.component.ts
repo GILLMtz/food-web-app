@@ -14,8 +14,9 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./search-menu.component.scss']
 })
 export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('searchBar') searchBar!: ElementRef;
-  @ViewChild('filterSection') filterSection!: ElementRef;
+  @ViewChild('searchBar') searchBar:ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('topSearchResults') topSearchResults:ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('filterSection') filterSection!:ElementRef;
   src: string = '';
 
   searchMenu: SearchMenu = { term: '' };
@@ -46,6 +47,7 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.currentAllResultsPage(event)?this.showAllResults(true):this.showAllResults(false); 
       }); 
     this.subscription$.push(this.routerUrl$);
+    
   }
 
   currentAllResultsPage(event: string): boolean {
@@ -59,9 +61,11 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.topSearchResults$ = (term.length > 0) ? this.recipeService.getRecipeByTerm(term, this.maxTopSearchResults) : this.topSearchResults$ = of([]);
   }
 
+
+
   sendParticularSearch(idRecipe: number) {
-    this.searchBar.nativeElement.blur();
-    this.router.navigate(['inicio/recetas/', idRecipe]);
+  this.afterSendSearchEvent();
+  this.router.navigate(['inicio/recetas/', idRecipe]);
   }
   move(event: any) {
     if (event.key === 'Enter') {
@@ -70,7 +74,7 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sendSearchByTerm() {
-    this.searchBar.nativeElement.blur();
+    this.afterSendSearchEvent();
     if (this.src.length > 0) {
       this.showAllResults(false);
       this.router.navigate(
@@ -79,6 +83,14 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     }
   }
+onFocus(){
+  this.topSearchResults.nativeElement.style.visibility='visible';
+}
+
+private afterSendSearchEvent(){
+  this.searchBar.nativeElement.blur();
+  this.topSearchResults.nativeElement.style.visibility='hidden';
+}
 
   sendSearchForAllResults() {
     this.showTags = !this.showTags;
@@ -93,7 +105,6 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private getFilters(): Array<any> {
-    console.log(this.filterSection.nativeElement.lastChild.childNodes);
     return [... this.filterSection.nativeElement.lastChild.childNodes]
       .filter((li: any) => (li.firstChild && li.firstChild.checked))
       .map(eli => eli.lastChild.innerText);
