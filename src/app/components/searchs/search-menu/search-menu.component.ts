@@ -51,7 +51,15 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       filter(event => event instanceof NavigationEnd),
       startWith(this.router),
       map((navigationEnd) => ((navigationEnd as NavigationEnd).url))).subscribe((event) => {
-        this.currentAllResultsPage(event) ? this.showAllResults(true) : this.showAllResults(false);
+       /*  this.currentAllResultsPage(event) ? this.showAllResults(true) : this.showAllResults(false); */
+       if( this.currentAllResultsPage(event)){
+        this.showAllResults(true) ;
+        this.setFiltersState(false);
+       }else{
+        this.showAllResults(false) ;
+        this.setFiltersState(true);
+       }
+   
       });
     this.subscription$.push(this.routerUrl$);
 
@@ -122,6 +130,15 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
     return [... this.filterSection.nativeElement.lastChild.childNodes]
       .filter((li: any) => (li.firstChild && li.firstChild.checked))
       .map(eli => eli.lastChild.innerText);
+  }
+
+  private setFiltersState(state:boolean){
+  [... this.filterSection.nativeElement.lastChild.childNodes]
+      .forEach((li: any) =>{
+      if(li && li.firstChild){
+        li.firstChild.disabled=state;
+      }
+    }  );
   }
 
   clearModel(){
