@@ -22,7 +22,7 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   searchMenu: SearchMenu = { term: '' };
   private allResultsPageRoutes = ['/', '/inicio'];
   private searchTermName = 'q';
-
+  
   topSearchResults$!: Observable<Recipe[]>;
   public recipeTags$!: Observable<string[]>;
   private routerUrl$!: Subscription;
@@ -122,6 +122,14 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
     return [... this.filterSection.nativeElement.lastChild.childNodes]
       .filter((li: any) => (li.firstChild && li.firstChild.checked))
       .map(eli => eli.lastChild.innerText);
+  }
+
+  clearModel(){
+    if(this.src.length>0){
+      this.src='';
+      this.searchBar.nativeElement.focus();
+      this.topSearchResults$=of([]);
+    }
   }
   ngOnDestroy(): void {
     this.subscription$.forEach((s: Subscription) => s.unsubscribe());
