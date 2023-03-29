@@ -1,5 +1,5 @@
-import { Component, OnInit,   ViewChild, ElementRef, AfterViewInit,  OnDestroy, Renderer2 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy, Renderer2 } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, pipe, Subscription } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
 import { Recipe } from 'src/app/models/recipe.model';
@@ -14,28 +14,35 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./search-menu.component.scss']
 })
 export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('searchBar') searchBar:ElementRef<HTMLInputElement> = {} as ElementRef;
-  @ViewChild('topSearchResults') topSearchResults:ElementRef<HTMLInputElement> = {} as ElementRef;
-  @ViewChild('filterSection') filterSection!:ElementRef;
+  @ViewChild('searchBar') searchBar: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('topSearchResults') topSearchResults: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('filterSection') filterSection!: ElementRef;
   src: string = '';
 
   searchMenu: SearchMenu = { term: '' };
   private allResultsPageRoutes = ['/', '/inicio'];
+  private searchTermName = 'q';
 
   topSearchResults$!: Observable<Recipe[]>;
   public recipeTags$!: Observable<string[]>;
   private routerUrl$!: Subscription;
+  private routerParams$!: Subscription;
   private subscription$: Array<Subscription> = [];
-  private maxTopSearchResults:number=5;
-  
- 
+
+
+  private maxTopSearchResults: number = 5;
+
+
 
   public showTags: boolean = true;
-  constructor(private recipeService: RecipeService, private router: Router, private searchService: SearchService
-    ,private renderer:Renderer2) { }
+  constructor(private recipeService: RecipeService, private router: Router,
+    private searchService: SearchService,
+    private activatedRoute: ActivatedRoute,
+    private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.getRecipeTags();
+    this.getParamsInUrl();
   }
   getRecipeTags() { this.recipeTags$ = this.recipeService.getTags(); }
 
@@ -44,10 +51,17 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       filter(event => event instanceof NavigationEnd),
       startWith(this.router),
       map((navigationEnd) => ((navigationEnd as NavigationEnd).url))).subscribe((event) => {
-      this.currentAllResultsPage(event)?this.showAllResults(true):this.showAllResults(false); 
-      }); 
+        this.currentAllResultsPage(event) ? this.showAllResults(true) : this.showAllResults(false);
+      });
     this.subscription$.push(this.routerUrl$);
-    
+
+  }
+
+  private getParamsInUrl() {
+    this.routerParams$ = this.activatedRoute.queryParams.subscribe((params => {
+      this.src = (params.hasOwnProperty(this.searchTermName) && params[this.searchTermName]) ?
+        params[this.searchTermName] : this.src;}));
+    this.subscription$.push(this.routerParams$);
   }
 
   currentAllResultsPage(event: string): boolean {
@@ -55,7 +69,7 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   showAllResults(state: boolean) {
-    this.renderer.setProperty(this.filterSection.nativeElement.childNodes[0].firstChild.firstChild,'checked',state);
+    this.renderer.setProperty(this.filterSection.nativeElement.childNodes[0].firstChild.firstChild, 'checked', state);
   }
   callSearch(term: any): void {
     this.topSearchResults$ = (term.length > 0) ? this.recipeService.getRecipeByTerm(term, this.maxTopSearchResults) : this.topSearchResults$ = of([]);
@@ -64,8 +78,8 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   sendParticularSearch(idRecipe: number) {
-  this.afterSendSearchEvent();
-  this.router.navigate(['inicio/recetas/', idRecipe]);
+    this.afterSendSearchEvent();
+    this.router.navigate(['inicio/recetas/', idRecipe]);
   }
   move(event: any) {
     if (event.key === 'Enter') {
@@ -83,14 +97,14 @@ export class SearchMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     }
   }
-onFocus(){
-  this.topSearchResults.nativeElement.style.visibility='visible';
-}
+  onFocus() {
+    this.topSearchResults.nativeElement.style.visibility = 'visible';
+  }
 
-private afterSendSearchEvent(){
-  this.searchBar.nativeElement.blur();
-  this.topSearchResults.nativeElement.style.visibility='hidden';
-}
+  private afterSendSearchEvent() {
+    this.searchBar.nativeElement.blur();
+    this.topSearchResults.nativeElement.style.visibility = 'hidden';
+  }
 
   sendSearchForAllResults() {
     this.showTags = !this.showTags;
