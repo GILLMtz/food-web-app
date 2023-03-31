@@ -18,7 +18,7 @@ export class BannerComponent implements OnInit ,OnDestroy{
   constructor(private recipeService:RecipeService,private router:Router) { }
 
   ngOnInit(): void {
-    this.topRecipes$=this.recipeService.getTopRecipes(3).subscribe((res)=>{
+    this.topRecipes$=this.recipeService.getTopRecipes(5).subscribe((res)=>{
       this.topRecipes=res;
       console.log("recetas recibidas  ",this.topRecipes);
     });
@@ -29,7 +29,6 @@ export class BannerComponent implements OnInit ,OnDestroy{
   }
   goToDetail(recipe:Recipe){
 /* this.router.navigate(['receta',id]); */
-console.log("receta a mostrar ", recipe);
 this.recipeSelected=recipe;
   }
 }

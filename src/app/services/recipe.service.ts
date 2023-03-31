@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as dataRaw from '../../assets/data/recipes.mock.json';
 import * as dataRaw_tags from '../../assets/data/recipesTags.mock.json';
 import { of } from 'rxjs';
+import { Recipe } from '../models/recipe.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,13 +51,20 @@ export class RecipeService {
 
   getTopRecipes(maxRecipes: number): Observable<any> {
     let recipesSum = 0;
-    let recipes = ((dataRaw as any).default).filter((r: any, index: number, array: Array<any>) => {
-      if (recipesSum <= maxRecipes) {
+    let recipes = ((dataRaw as any).default);
+    let numberRecipes = recipes.length;
+    let recipesSelected: any = {};
+    let prefix='B';
+
+    while (recipesSum < maxRecipes) {
+      let randomIndex = Math.floor(Math.random() * numberRecipes);
+      if (!recipesSelected.hasOwnProperty(prefix+randomIndex)) {
+        recipesSelected[prefix+randomIndex] = randomIndex;
         recipesSum++;
-        return r;
       }
-    });
-    console.log("recetas filtradas ", recipes);
+    }
+ 
+    recipes = Object.keys(recipesSelected).map((key: string) => recipes[recipesSelected[key]]);
     return of(recipes);
   }
 
