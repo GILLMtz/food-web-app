@@ -9,10 +9,12 @@
     max-width: var(--max-width_recommendations-card);
     display: flex;
     justify-content: flex-end;
+    margin: auto;
 
     &__img {
         position: absolute;
         height: 100%;
+        width: 100%;
         z-index: -2;
 
         img {
@@ -150,5 +152,9 @@
 @media screen and (max-width: 576px) {
     .card-overlay-detail {
         --heigth_recommendations-card: 280px;
+        
+        &__info::after {
+            height: 30%;
+        }
     } 
 }
