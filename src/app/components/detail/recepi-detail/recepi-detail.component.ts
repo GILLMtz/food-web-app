@@ -24,7 +24,7 @@ export class RecepiDetailComponent implements OnInit, OnDestroy {
     return this.route.params.
       subscribe((params: Params) => 
       {this.IdRecipe = parseInt(params['id']);
-        console.log("change params ");
+       
         this.subscribes$.push(this.getRecipe());
       });
   }

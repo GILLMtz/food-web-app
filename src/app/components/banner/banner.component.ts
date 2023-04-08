@@ -20,7 +20,7 @@ export class BannerComponent implements OnInit ,OnDestroy{
   ngOnInit(): void {
     this.topRecipes$=this.recipeService.getTopRecipes(5).subscribe((res)=>{
       this.topRecipes=res;
-      console.log("recetas recibidas  ",this.topRecipes);
+      
     });
   }
 

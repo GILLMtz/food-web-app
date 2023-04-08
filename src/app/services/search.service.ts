@@ -18,7 +18,7 @@ export class SearchService {
     return new Observable((observer) => {
     //  const { username, email, phoneNumber, country, state } = data || {} as any;
       //this.signupDataSubject.next({ username, email, phoneNumber, country, state });
-      console.log("emitiendo query ");
+       
       this.searchQuerySubject.next(query);
       observer.complete();
     });
@@ -33,7 +33,7 @@ export class SearchService {
 
   public getData():Observable<SearchMenu> {
     //return this.signupData;
-    console.log("getdata () ....");
+     
     return this.searchQuery;
   }
 }

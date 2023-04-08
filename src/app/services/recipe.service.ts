@@ -14,7 +14,7 @@ export class RecipeService {
   }
   getRecipeByTerm(term: string, maxRecipes = -1): Observable<any> {
     let recipeCount = 0;
-    /* console.log("procesando getRecipeId ",(dataRaw as any).default); */
+     
     let recipe = ((dataRaw as any).default).filter((r: any) =>
       r.title.toLowerCase().includes(term.toLowerCase()) ||
       r.description.toLowerCase().includes(term.toLowerCase())).
@@ -31,9 +31,9 @@ export class RecipeService {
   }
 
   getRecipeById(id: number): Observable<any> {
-    console.log("procesando getRecipeId ", (dataRaw as any).default);
+     
     let recipe = ((dataRaw as any).default).filter((r: any) => r.id == id);
-    console.log('Recipe obtenida', recipe);
+    
     return of(recipe[0]);
   }
   getRecipes(filters: Array<string> = []): Observable<any> {
@@ -70,7 +70,7 @@ export class RecipeService {
 
   getTags(): Observable<any> {
     let tags = ((dataRaw_tags as any).default);
-    console.log('clasificacion de las recetas', tags);
+    
     return of(tags);
 
   }

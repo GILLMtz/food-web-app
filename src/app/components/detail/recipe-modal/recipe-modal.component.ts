@@ -16,7 +16,7 @@ private moveScroll=false;
   this.router.events.subscribe(
     ()=>{
       if(this.moveScroll){
-        console.log("..... move scroll ");
+        
         let element=this.getResultsSectionElement();
         if(element) {element.scrollIntoView({ behavior: "smooth" })}
         this.moveScroll=false;
@@ -29,7 +29,7 @@ private moveScroll=false;
   }
 
   goToDetail(idRecipe:number){
-    console.log("ver detalle, orden enviada desde el modal:  ",idRecipe);
+   
     
   /*   this.router.navigate(['inicio/recetas/', idRecipe],{fragment:'resultsSection'}); */
 
@@ -43,7 +43,7 @@ private moveScroll=false;
   }
   private getPostionDetail():number[]{
     let el=document.getElementById('resultsSection');
-    console.log("posicion del elemento => ",[el?.offsetLeft,el?.offsetTop ]);
+ 
    let offsetLeft=(el?.offsetLeft)?el?.offsetLeft:0;
    let  offsetTop=(el?.offsetTop)?el?.offsetTop:0;
     return [offsetLeft,offsetTop ];
