@@ -43,3 +43,8 @@ Thumbs.db
 
 
 src/assets/images_statics/*
+
+
+
+# Gift source video
+*.stg
